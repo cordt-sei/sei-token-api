@@ -1,0 +1,15 @@
+syntax = "proto3";
+
+package sf.substreams.sei.oracle.v1;
+
+message SetOraclePrice {
+  string price_id = 1;
+  double price = 2;
+  double conf = 3;
+  int32 expo = 4;
+  int64 publish_time = 5;
+}
+
+message SetOraclePrices {
+  repeated SetOraclePrice prices = 1;
+}
