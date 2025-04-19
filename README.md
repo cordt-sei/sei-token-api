@@ -1,6 +1,6 @@
 # Sei Token Price Oracle
 
-A reliable, fault-tolerant price oracle service that fetches, stores, and serves cryptocurrency price data with a focus on Sei blockchain tokens.
+A basic price oracle wrapper for Sei using multiple failover data sources.
 
 ## Overview
 
