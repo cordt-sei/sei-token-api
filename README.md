@@ -5,6 +5,7 @@ A reliable, fault-tolerant price oracle service that fetches, stores, and serves
 ## Overview
 
 This service aggregates token price data from multiple sources with a tiered fallback strategy:
+
 1. **Primary**: StreamingFast Substreams (on-chain events)
 2. **Fallback**: Pyth Network Price API
 3. **Secondary Fallback**: CoinGecko API
@@ -38,7 +39,7 @@ yarn build
 
 Create a `.env` file in the project root:
 
-```
+```ini
 PORT=3000
 NODE_ENV=development
 
@@ -59,6 +60,7 @@ yarn start
 ```
 
 The service will:
+
 1. Initialize the database
 2. Check for Substreams CLI availability
 3. Start price data ingestion from available sources
@@ -68,21 +70,27 @@ The service will:
 ## API Endpoints
 
 ### Health Check
-```
+
+```ini
 GET /health
 ```
+
 Response: `{"status":"ok"}`
 
 ### Token List
-```
+
+```ini
 GET /tokens
 ```
+
 Returns a list of tracked tokens with metadata.
 
 ### Latest Prices
-```
+
+```ini
 GET /prices
 ```
+
 Returns the most recent price data for all tracked tokens.
 
 ## Architecture
@@ -118,13 +126,14 @@ Returns the most recent price data for all tracked tokens.
 
 To add a new token price feed:
 
-1. Add the token to the database:
+- Add the token to the database:
+
 ```sql
 INSERT INTO tokens (name, symbol, decimals, contract_address)
 VALUES ('New Token', 'NTK', 18, '0xnew_token_contract_address');
 ```
 
-2. Update the price source mappings in `pythService.ts` to include the new token.
+- Update the price source mappings in `pythService.ts` to include the new token.
 
 ## Customization
 
